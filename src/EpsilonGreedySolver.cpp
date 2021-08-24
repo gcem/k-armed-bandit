@@ -15,14 +15,14 @@ int
 EpsilonGreedySolver::getChoice()
 {
     // make a random choice with probability epsilon
-    std::uniform_real_distribution uniformDistribution;
+    std::uniform_real_distribution<double> uniformDistribution;
     std::default_random_engine generator;
     if (uniformDistribution(generator) < epsilon) {
         lastChoice = rand() % arms;
         return lastChoice;
     }
 
-    double maxValue = std::numeric_limits<double>::min();
+    double maxValue = std::numeric_limits<double>::lowest();
     int maxArm = 0, nMax = 0;
     for (int i = 0; i < arms; i++) {
         if (valueEstimates[i] > maxValue) {

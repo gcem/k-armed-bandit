@@ -27,7 +27,7 @@ ConstantRewardTestBed::test(BanditSolver* solver, int numberOfTests)
             values[arm] = valueDistribution(generator);
 
         int best = 0;
-        double maxValue = std::numeric_limits<double>::min();
+        double maxValue = std::numeric_limits<double>::lowest();
         for (int arm = 0; arm < arms; arm++)
             if (values[arm] > maxValue) {
                 maxValue = values[arm];
