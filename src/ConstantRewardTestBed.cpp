@@ -1,4 +1,5 @@
 #include "ConstantRewardTestBed.hpp"
+#include "Common.hpp"
 #include <limits>
 
 ConstantRewardTestBed::ConstantRewardTestBed(int arms,
@@ -18,7 +19,6 @@ TestResult
 ConstantRewardTestBed::test(BanditSolver* solver, int numberOfTests)
 {
     TestResult result(rounds);
-    std::default_random_engine generator;
 
     for (int t = 0; t < numberOfTests; t++) {
         // create problem

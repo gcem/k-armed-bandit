@@ -1,4 +1,5 @@
 #include "EpsilonGreedySolver.hpp"
+#include "Common.hpp"
 #include <limits>
 #include <random>
 
@@ -16,7 +17,6 @@ EpsilonGreedySolver::getChoice()
 {
     // make a random choice with probability epsilon
     std::uniform_real_distribution<double> uniformDistribution;
-    std::default_random_engine generator;
     if (uniformDistribution(generator) < epsilon) {
         lastChoice = rand() % arms;
         return lastChoice;
