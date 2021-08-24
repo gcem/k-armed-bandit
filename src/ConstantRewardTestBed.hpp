@@ -8,5 +8,5 @@ public:
                           double mean = 0,
                           double variance = 1);
 
-    TestResult test(BanditSolver* solver) override;
+    TestResult test(BanditSolver* solver, int numberOfTests) override;
 };
