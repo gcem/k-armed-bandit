@@ -18,5 +18,5 @@ public:
     void reset() override;
 
 protected:
-    int round;
+    std::vector<int> choiceCount;
 };

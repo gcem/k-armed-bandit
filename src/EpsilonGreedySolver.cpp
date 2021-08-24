@@ -35,15 +35,17 @@ EpsilonGreedySolver::getChoice()
 
     if (nMax == 1) {
         lastChoice = maxArm;
-        return maxArm;
+        return lastChoice;
     } else {
         // choose a random arm among greedy choices
         int choice = rand() % nMax;
         for (int i = 0; i < arms; i++) {
             if (valueEstimates[i] == maxValue)
                 choice--;
-            if (choice == -1)
-                return i;
+            if (choice == -1) {
+                lastChoice = i;
+                return lastChoice;
+            }
         }
     }
 }

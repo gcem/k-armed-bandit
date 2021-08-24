@@ -5,14 +5,14 @@ SampleAverageEpsilonGreedySolver::SampleAverageEpsilonGreedySolver(
   double epsilon,
   double initialEstimates)
   : EpsilonGreedySolver(arms, epsilon, initialEstimates)
-  , round(0)
+  , choiceCount(arms, 0)
 {}
 
 void
 SampleAverageEpsilonGreedySolver::setReward(double reward)
 {
-    round++;
-    double sampleWeight = 1.0 / round;
+    choiceCount[lastChoice]++;
+    double sampleWeight = 1.0 / choiceCount[lastChoice];
     valueEstimates[lastChoice] =
       reward * sampleWeight + valueEstimates[lastChoice] * (1 - sampleWeight);
 }
@@ -20,6 +20,6 @@ SampleAverageEpsilonGreedySolver::setReward(double reward)
 void
 SampleAverageEpsilonGreedySolver::reset()
 {
-    round = 0;
+    choiceCount = std::vector<int>(arms, 0);
     EpsilonGreedySolver::reset();
 }
