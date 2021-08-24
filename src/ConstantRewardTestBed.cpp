@@ -52,4 +52,6 @@ ConstantRewardTestBed::test(BanditSolver* solver, int numberOfTests)
         result.optimalChoices[round] /= numberOfTests;
         result.averageReward[round] /= numberOfTests;
     }
+
+    return result;
 }
