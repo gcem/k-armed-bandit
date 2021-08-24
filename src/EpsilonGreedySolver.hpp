@@ -1,3 +1,5 @@
+#pragma once
+
 #include "BanditSolver.hpp"
 #include <vector>
 
