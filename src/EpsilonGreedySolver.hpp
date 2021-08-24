@@ -14,8 +14,18 @@ public:
 
     int getChoice() override final;
 
+    void reset() override;
+
 protected:
     int lastChoice;
+
     double epsilon;
+
+    /**
+     * @brief Needed for reset()
+     *
+     */
+    double initialEstimates;
+
     std::vector<double> valueEstimates;
 };

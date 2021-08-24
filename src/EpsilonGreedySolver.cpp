@@ -7,6 +7,7 @@ EpsilonGreedySolver::EpsilonGreedySolver(int arms,
                                          double initialEstimates)
   : BanditSolver(arms)
   , epsilon(epsilon)
+  , initialEstimates(initialEstimates)
   , valueEstimates(arms, initialEstimates)
 {}
 
@@ -45,4 +46,10 @@ EpsilonGreedySolver::getChoice()
                 return i;
         }
     }
+}
+
+void
+EpsilonGreedySolver::reset()
+{
+    valueEstimates = std::vector<double>(arms, initialEstimates);
 }
