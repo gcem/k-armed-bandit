@@ -1,3 +1,5 @@
+#pragma once
+
 class BanditSolver
 {
 public:
@@ -21,6 +23,12 @@ public:
      * @param reward Reward due to last choice, can be negative
      */
     virtual void setReward(double reward) = 0;
+
+    /**
+     * @brief Reset initial state for a new problem
+     *
+     */
+    virtual void reset() = 0;
 
 protected:
     int arms;
