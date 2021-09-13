@@ -1,6 +1,8 @@
 #include "ChangingRewardTestBed.hpp"
 #include "ConstantRewardTestBed.hpp"
 #include "SampleAverageEpsilonGreedySolver.hpp"
+#include <iomanip>
+#include <sstream>
 #include <string>
 
 int
@@ -16,9 +18,13 @@ main()
 
     for (double epsilon : epsilons) {
         SampleAverageEpsilonGreedySolver solver(arms, epsilon, 0);
-        auto results3 = testBed.test(&solver3, 1000);
-        // TODO
-        results1.exportTxt("ch_results_eps_0.10.txt");
+        auto results = testBed.test(&solver, 1000);
+
+        std::ostringstream str;
+        str << "changing_results_eps_" << std::fixed << std::setprecision(2)
+            << epsilon << ".txt";
+
+        results.exportTxt(str.str());
     }
 
     return 0;
