@@ -1,6 +1,6 @@
-add_library(BanditSolvers BanditSolver.cpp EpsilonGreedySolver.cpp SampleAverageEpsilonGreedySolver.cpp)
+add_library(BanditSolvers BanditSolver.cpp EpsilonGreedySolver.cpp SampleAverageEpsilonGreedySolver.cpp ConstantStepSizeEpsilonGreedySolver.cpp)
 
-add_library(BanditTests ConstantRewardTestBed.cpp  TestBed.cpp TestResult.cpp)
+add_library(BanditTests ConstantRewardTestBed.cpp ChangingRewardTestBed.cpp TestBed.cpp TestResult.cpp)
 
 target_link_libraries(BanditTests PUBLIC BanditSolvers)
 
