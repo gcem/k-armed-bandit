@@ -1,4 +1,4 @@
-function plotConstant
+function plotConstStepChanging
   fig = figure;
   subplot(1,2,1)
   hold on
@@ -8,7 +8,7 @@ function plotConstant
   hold on
   title 'Average rewards'
   for epsilon = [0 0.01 0.1]
-    expdata = dlmread(sprintf('constant_results_eps_%.2f.txt', epsilon));
+    expdata = dlmread(sprintf('const_step_0.1_results_eps_%.2f.txt', epsilon));
     subplot(1,2,1)
     plot(expdata(1, :))
     subplot(1,2,2)
