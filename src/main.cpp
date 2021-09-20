@@ -12,8 +12,8 @@ main()
     // this should normally not be set in main ^_^
     int arms = 10;
 
-    // ConstantRewardTestBed testBed(arms, 50000, 0, 1, 1);
-    ChangingRewardTestBed testBed(arms, 50000, 0, 0.0001, 1);
+    ConstantRewardTestBed testBed(arms, 5000, 0, 1, 1);
+    // ChangingRewardTestBed testBed(arms, 50000, 0, 0.0001, 1);
 
     std::vector<double> epsilons{ 0, 0.01, 0.1 };
 
@@ -28,18 +28,14 @@ main()
     //     results.exportTxt(str.str());
     // }
 
-    std::vector<double> alphas{ 1, 0.5, 0.1, 0.01, 0.001 };
+    ConstantStepSizeEpsilonGreedySolver solverEpsilon(arms, 0.1, 0, 0.1);
+    ConstantStepSizeEpsilonGreedySolver solverGreedy(arms, 0, 5, 0.1);
 
-    for (double alpha : alphas) {
-        ConstantStepSizeEpsilonGreedySolver solver(arms, 0.1, 0, alpha);
-        auto results = testBed.test(&solver, 1000);
+    auto resultsEpsilon = testBed.test(&solverEpsilon, 20000);
+    auto resultsGreedy = testBed.test(&solverGreedy, 20000);
 
-        std::ostringstream str;
-        str << "const_step_alpha_" << std::fixed << std::setprecision(2)
-            << alpha << "_results_eps_0.10.txt";
-
-        results.exportTxt(str.str());
-    }
+    resultsEpsilon.exportTxt("comparison_epsilon.txt");
+    resultsGreedy.exportTxt("comparison_greedy.txt");
 
     return 0;
 }
