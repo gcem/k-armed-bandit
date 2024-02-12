@@ -30,6 +30,15 @@ public:
      */
     virtual void reset() = 0;
 
+    /**
+     * @brief Average Q value
+     * 
+     * May not be implemented
+     * 
+     * @return Average Q estimate
+     */
+    virtual double getAverageEstimate();
+
 protected:
     int arms;
 };

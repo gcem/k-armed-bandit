@@ -18,6 +18,8 @@ public:
 
     void reset() override;
 
+    double getAverageEstimate() override;
+
 protected:
     double stepSize;
 };

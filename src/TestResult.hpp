@@ -28,5 +28,7 @@ public:
     std::vector<double> optimalChoices;
     std::vector<double> averageReward;
 
+    std::vector<double> averageEstimate;
+
     // order of fields above are important for export functions
 };

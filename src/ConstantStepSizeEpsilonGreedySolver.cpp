@@ -21,3 +21,11 @@ ConstantStepSizeEpsilonGreedySolver::reset()
 {
     EpsilonGreedySolver::reset();
 }
+
+double ConstantStepSizeEpsilonGreedySolver::getAverageEstimate() 
+{
+    double total = 0;
+    for (double q : valueEstimates)
+        total += q;
+    return total / arms;
+}
